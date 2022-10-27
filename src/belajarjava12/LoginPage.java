@@ -182,6 +182,7 @@ public class LoginPage extends javax.swing.JFrame {
         {
             new Dashboard().setVisible(true);
             JOptionPane.showMessageDialog(null, "Login sukses");
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Login gagal");
         }

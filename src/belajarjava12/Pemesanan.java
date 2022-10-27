@@ -32,6 +32,8 @@ public class Pemesanan extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton5 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         mainPanel = new javax.swing.JPanel();
         panelBg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -47,8 +49,8 @@ public class Pemesanan extends javax.swing.JFrame {
         txtHarga = new javax.swing.JTextField();
         btnBayar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        pilihanBayar2 = new javax.swing.JRadioButton();
+        pilihanBayar = new javax.swing.JRadioButton();
 
         jButton5.setText("jButton5");
 
@@ -129,16 +131,23 @@ public class Pemesanan extends javax.swing.JFrame {
                 btnBayarMouseClicked(evt);
             }
         });
+        btnBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarActionPerformed(evt);
+            }
+        });
         mainPanel.add(btnBayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 190, -1));
 
         jLabel6.setText("Harga");
         mainPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        jRadioButton1.setText("COD");
-        mainPanel.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
+        buttonGroup1.add(pilihanBayar2);
+        pilihanBayar2.setText("COD");
+        mainPanel.add(pilihanBayar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
-        jRadioButton2.setText("Transfer");
-        mainPanel.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+        buttonGroup1.add(pilihanBayar);
+        pilihanBayar.setText("Transfer");
+        mainPanel.add(pilihanBayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,8 +206,26 @@ public class Pemesanan extends javax.swing.JFrame {
 
     private void btnBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBayarMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Pembayaran Dikonfirmasi");
+        String pembayaranVia = "";
+        if(pilihanBayar.isSelected()){
+            pembayaranVia = "Transfer";
+        }else{
+            pembayaranVia = "COD";
+        }
+        CetakStruk cs = new CetakStruk(txtProduk.getText(), txtHarga.getText(),
+                txtNumber.getText(), txtTotal.getText(),
+                pembayaranVia
+                
+        );
+        String message = "";
+        message = cs.toString();
+        JOptionPane.showMessageDialog(null, message);
+        
     }//GEN-LAST:event_btnBayarMouseClicked
+
+    private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBayarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,6 +264,8 @@ public class Pemesanan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBayar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
@@ -246,10 +275,10 @@ public class Pemesanan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel panelBg;
+    private javax.swing.JRadioButton pilihanBayar;
+    private javax.swing.JRadioButton pilihanBayar2;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtProduk;
