@@ -8,6 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,6 +35,7 @@ public class Pemesanan extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         mainPanel = new javax.swing.JPanel();
         panelBg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -51,6 +53,11 @@ public class Pemesanan extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         pilihanBayar2 = new javax.swing.JRadioButton();
         pilihanBayar = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        btnRemove = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblOrder = new javax.swing.JTable();
 
         jButton5.setText("jButton5");
 
@@ -71,8 +78,8 @@ public class Pemesanan extends javax.swing.JFrame {
         panelBgLayout.setHorizontalGroup(
             panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBgLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 179, Short.MAX_VALUE))
         );
         panelBgLayout.setVerticalGroup(
             panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +89,7 @@ public class Pemesanan extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, -1));
+        mainPanel.add(panelBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
 
         jLabel2.setText("Kuantitas");
         mainPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
@@ -136,7 +143,7 @@ public class Pemesanan extends javax.swing.JFrame {
                 btnBayarActionPerformed(evt);
             }
         });
-        mainPanel.add(btnBayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 190, -1));
+        mainPanel.add(btnBayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 190, -1));
 
         jLabel6.setText("Harga");
         mainPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
@@ -147,17 +154,77 @@ public class Pemesanan extends javax.swing.JFrame {
 
         buttonGroup1.add(pilihanBayar);
         pilihanBayar.setText("Transfer");
+        pilihanBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilihanBayarActionPerformed(evt);
+            }
+        });
         mainPanel.add(pilihanBayar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btnRemove.setText("Remove");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        tblOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nama Produk", "Harga", "Kuantitas", "Total", "Bayar via"
+            }
+        ));
+        jScrollPane1.setViewportView(tblOrder);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRemove)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRemove)
+                    .addComponent(btnAdd))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 410, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 874, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
         );
 
         pack();
@@ -207,7 +274,7 @@ public class Pemesanan extends javax.swing.JFrame {
     private void btnBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBayarMouseClicked
         // TODO add your handling code here:
         String pembayaranVia = "";
-        if(pilihanBayar.isSelected()){
+            if(pilihanBayar.isSelected()){
             pembayaranVia = "Transfer";
         }else{
             pembayaranVia = "COD";
@@ -220,12 +287,67 @@ public class Pemesanan extends javax.swing.JFrame {
         String message = "";
         message = cs.toString();
         JOptionPane.showMessageDialog(null, message);
+        new StrukDigital().setVisible(true);
         
     }//GEN-LAST:event_btnBayarMouseClicked
 
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBayarActionPerformed
+
+    private void pilihanBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihanBayarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pilihanBayarActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // TODO add your handling code here:
+        
+      
+
+        DefaultTableModel tblModel = (DefaultTableModel) tblOrder.getModel();
+        if (tblOrder.getSelectedRowCount() == 1) {
+            tblModel.removeRow(tblOrder.getSelectedRow());
+
+        } else {
+            if (tblOrder.getRowCount() == 0) {
+                System.out.println("table is empty");
+                JOptionPane.showMessageDialog(null, "table is empty");
+            } else {
+                JOptionPane.showMessageDialog(null, "please select single column");
+                System.out.println("please select single column");
+            }
+
+        }
+        
+        
+       
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        String[] data = null;
+        int hasil = 0;
+         String pembayaranVia = "";
+            if(pilihanBayar.isSelected()){
+            pembayaranVia = "Transfer";
+        }else{
+            pembayaranVia = "COD";
+        }
+        data = new String[]{txtProduk.getText(),txtHarga.getText()
+        ,txtNumber.getText(),txtTotal.getText(),pembayaranVia};
+
+       
+        DefaultTableModel tblModel = (DefaultTableModel) tblOrder.getModel();
+        tblModel.addRow(data);
+
+        for (int i = 0; i < tblOrder.getRowCount(); i++) {  // Loop through the rows
+            // Record the 5th column value (index 4)
+            hasil += Integer.parseInt(tblOrder.getValueAt(i, 1).toString());
+        }
+        
+       
+        
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,9 +385,12 @@ public class Pemesanan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBayar;
+    private javax.swing.JButton btnRemove;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
@@ -275,10 +400,13 @@ public class Pemesanan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel panelBg;
     private javax.swing.JRadioButton pilihanBayar;
     private javax.swing.JRadioButton pilihanBayar2;
+    private javax.swing.JTable tblOrder;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtNumber;
     private javax.swing.JTextField txtProduk;
